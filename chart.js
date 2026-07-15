@@ -1,7 +1,14 @@
 function extractData(weather_data) {
     let data = weather_data.daily.temperature_2m_max
     let dateStrings = weather_data.daily.time
-    return [data, dateStrings]
+    if (checkBox.checked) {
+        return [data, dateStrings]
+    }
+    else {
+        dataF = data.map(num => (num * (9/5) + 32).toFixed(1));
+        return [dataF, dateStrings]
+    }
+    
 }
 
 // function drawChart(data, dateStrings) {
@@ -87,4 +94,17 @@ function drawChart(weather) {
         ctx.fillText(data[i], getX(i), getY(data[i]) - 12);
         ctx.fillStyle = '#007bff'; // reset for next dot loop
     }
+
+    canvas.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)"
 }
+
+function destroyChart() {
+    const canvas = document.querySelector('#lineChart');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    canvas.style.boxShadow = ""
+    const divCity = document.querySelector('#city-country')
+    divCity.textContent = ""
+}
+

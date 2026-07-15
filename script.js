@@ -1,16 +1,34 @@
+let global_weather = null;
+let global_county = null;
+let global_city = null;
+
+
 async function formSubmit(event) {
     event.preventDefault();
     const city = document.querySelector('#get-city').value;
+    global_city = city
     data_call = await fetchCoord(city);
-    console.log(data_call);
-    latitude = data_call.results[0].latitude;
-    longitude = data_call.results[0].longitude;
-    weather = await fetchWeather(latitude, longitude);
-    console.log(weather);
-    drawChart(weather);
+    destroyChart()
     
-    // console.log(city);
-    // console.log(weather);
+    console.log(data_call);
+    
+    try {
+        let country = data_call.results[0].country
+        global_country = country
+        let latitude = data_call.results[0].latitude;
+        let longitude = data_call.results[0].longitude;
+        let weather = await fetchWeather(latitude, longitude);
+        global_weather = await weather
+        console.log(weather);
+        indicateCityCountry(city, country)
+        drawChart(weather);
+    }
+    catch (error) {
+        let cityDiv = document.querySelector('#city-country')
+        console.error('Fetch error:', error);
+        cityDiv.textContent = 'Try Again'
+
+    }
 }
 
 async function fetchCoord(city) {
@@ -43,6 +61,35 @@ async function fetchWeather(latitude, longitude) {
     }
 }
 
-const form = document.querySelector('#city-form')
+function indicateCityCountry(city, country) {
+    let cityDiv = document.querySelector('#city-country')
+    cityDiv.textContent = `${city}, ${country}`
+}
+
+function checkDegrees(e) {
+    if (global_city == null) {
+        return
+    }
+    else{
+        if (e.target.checked) {
+            console.log("Checked!");
+            destroyChart()
+            drawChart(global_weather)
+            indicateCityCountry(global_city, global_country)
+        } else {
+            console.log("Unchecked!");
+            destroyChart()
+            drawChart(global_weather)
+            indicateCityCountry(global_city, global_country)
+        }
+    }
+
+}
+
+const form = document.querySelector('#city-form');
 
 form.addEventListener('submit', formSubmit);
+
+const checkBox = document.querySelector('#degrees-checked');
+
+checkBox.addEventListener('change', checkDegrees);

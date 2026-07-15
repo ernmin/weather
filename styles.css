@@ -1,0 +1,29 @@
+.main-header {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0; /* Space around the title */
+}
+
+.content-wrapper {
+    width: 100%;       /* Uses 100% of the Viewport Width */
+    min-height: 100vh;  /* Optional: Makes it at least as tall as the screen */
+    
+    /* If you want the content INSIDE to be centered but the 
+       background to be full width, use this: */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    gap: 15px; /* Adjust this value to change the spacing */
+    align-items: center;
+    margin: 20px;
+}
+
+canvas {
+    background-color: #ffffff;
+    /* box-shadow: 0 4px 10px rgba(0,0,0,0.1); */
+    border-radius: 8px;
+}

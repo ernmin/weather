@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="chart.js" defer></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Weather</h1>
+    </header>
+
+    <div class="content-wrapper">
+        <div>What city are you in?</div>
+        <form id="city-form" class="form-container">
+                <input autocomplete="off" autofocus name="name" placeholder="City" type="text" id="get-city">
+                <button type="submit">Go!</button>
+        </form>
+        <canvas id="lineChart" width="600" height="400"></canvas>
+    </div>
+    
+</body>
+</html>

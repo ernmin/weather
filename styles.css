@@ -28,6 +28,7 @@ body {
 .form-container-slider{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .form-container {
@@ -133,4 +134,13 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    
+
+    canvas {
+    width: 95%;
+    height: 100%;
+    }
 }

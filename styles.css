@@ -28,6 +28,7 @@ body {
 .form-container-slider{
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -35,7 +36,12 @@ body {
     display: flex;
     gap: 15px; /* Adjust this value to change the spacing */
     align-items: center;
-    margin: 20px;
+    justify-content: center;
+    margin: 15px;
+}
+
+form {
+  width: 70%
 }
 
 canvas {
@@ -47,7 +53,7 @@ canvas {
 }
 
 button {
-    width: 80%;
+    width: 100%;
     padding: 12px;
     border-radius: 6px;
     border: none;
@@ -74,13 +80,19 @@ input {
 }
 
 .degrees {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 0.5rem;
 }
+
+
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin-right: 10px;
 }
 
 .switch input { 
@@ -137,8 +149,6 @@ input:checked + .slider:before {
 }
 
 @media screen and (max-width: 768px) {
-    
-
     canvas {
     width: 95%;
     height: 100%;
